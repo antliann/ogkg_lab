@@ -1,3 +1,7 @@
+form {
+    margin: 10px 10px 26px 10px;
+}
+
 input {
     margin: 3px;
 }
@@ -7,10 +11,11 @@ input.random {
 }
 
 .field {
+    position: relative;
     width: 90vw;
     height: 80vh;
-    border: 2px solid black;
-    margin: 10px 10px 10px 40px;
+    border: 2px solid lightgrey;
+    margin: 10px 10px 10px 45px;
 }
 
 .main-btn {
@@ -23,6 +28,7 @@ input.random {
 .num {
     font-size: 20px;
     position: absolute;
+    margin-left: 5px;
 }
 
 .num100y {
@@ -37,4 +43,13 @@ input.random {
 .num100x {
     top: calc(100px + 80vh);
     left: 92vw;
+}
+
+.point {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: black;
+    border-radius: 2px;
+    transform: translate(-50%, 50%);
 }

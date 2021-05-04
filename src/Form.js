@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import './index.css';
-import {insertPoint} from "./algorithm";
+import {insertPoint, points, randomize, clear} from "./algorithm";
 
 export function Form(props) {
     const [currX, setCurrX] = useState(false);
     const [currY, setCurrY] = useState(false);
+    const [quantity, setQuantity] = useState(false);
 
     return (
         <form>
@@ -21,7 +22,12 @@ export function Form(props) {
             <button
                 type="button"
                 onClick={() => {
+                    if (currX === false || currY === false || currX < 0 || currX > 100 || currX < 0 || currY > 100) {
+                        alert('Please, enter numbers from 0 to 100');
+                        return;
+                    }
                     insertPoint(currX, currY);
+                    props.setPoints(points);
                     setCurrX(false);
                     setCurrY(false);
                 }}
@@ -29,8 +35,28 @@ export function Form(props) {
                 Insert point
             </button>
             <br/>
-            <input className="random" type="number" placeholder="Random points number"/>
-            <button type="button">Randomize</button>
+            <input
+                className="random"
+                type="number"
+                placeholder="Random points quantity"
+                value={quantity}
+                onChange={(event) => setQuantity(+event.target.value)}
+            />
+            <button type="button" onClick={() => {
+                randomize(quantity);
+                props.setPoints(points);
+            }}>
+                Randomize
+            </button>
+            <button
+                type="button"
+                onClick={() => {
+                    props.setPoints([]);
+                    setQuantity(false);
+                    clear();
+                }}>
+                Clear all
+            </button>
         </form>
     );
 }
