@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.css';
+import {insertPoint} from './algorithm';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <input type="number" placeholder="X"/>
+        <input type="number" placeholder="Y"/>
+        <button onClick={() => insertPoint()}>Insert point</button>
+          <br/>
+          <input className="random" type="number" placeholder="Random points number"/>
+        <button>Randomize</button>
+      </form>
+      <button className="main-btn">
+        Build convex hull and inscribe triangle
+      </button>
+        <br/>
+        <div className="field">
+
+        </div>
+        <div className="num num100y">
+            100
+        </div>
+        <div className="num num0">
+            0
+        </div>
+        <div className="num num100x">
+            100
+        </div>
     </div>
   );
 }
