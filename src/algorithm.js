@@ -18,7 +18,7 @@ function randomize(quantity) {
     points = []
     let i = 0;
     while (i < quantity) {
-        insertPoint(Math.random() * 100, Math.random() * 100);
+        insertPoint(Math.random() * 90 + 5, Math.random() * 90 + 5);
         i++;
     }
 }
@@ -27,4 +27,12 @@ function clear() {
     points = [];
 }
 
-export {insertPoint, randomize, points, clear};
+function buildHull(points) {
+
+}
+
+function buildTriangle(hull) {
+
+}
+
+export {insertPoint, randomize, points, clear, buildTriangle, buildHull};

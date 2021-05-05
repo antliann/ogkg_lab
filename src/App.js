@@ -2,18 +2,28 @@ import React, {useState} from 'react';
 import './index.css';
 import {Form} from './Form';
 import {Field} from "./Field";
+import {buildHull, buildTriangle} from "./algorithm";
 
 function App() {
     const [points, setPoints] = useState([]);
+    const [hull, setHull] = useState([]);
+    const [triangle, setTriangle] = useState([]);
 
     return (
         <div className="App">
             <Form setPoints={(pointsForSet) => setPoints([...pointsForSet])} />
-            <button className="main-btn">
+            <button className="main-btn" onClick={() => {
+                setHull(buildHull(points));
+                setTriangle((buildTriangle(hull)));
+            }}>
                 Build convex hull and inscribe triangle
             </button>
 
-            <Field points={points} />
+            <Field
+                points={points}
+                hull={hull}
+                triangle={triangle}
+            />
 
             <div className="num num100y">100</div>
             <div className="num num0">0</div>

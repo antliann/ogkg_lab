@@ -53,3 +53,7 @@ input.random {
     border-radius: 2px;
     transform: translate(-50%, 50%);
 }
+
+svg {
+    position: absolute;
+}
