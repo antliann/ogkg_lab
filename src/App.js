@@ -11,15 +11,30 @@ function App() {
 
     return (
         <div className="App">
-            <Form setPoints={(pointsForSet) => setPoints([...pointsForSet])} />
+            <Form
+                setPoints={(pointsForSet) => setPoints([...pointsForSet])}
+                clearHulls={() => {
+                    setHull([]);
+                    setTriangle([]);
+                }}
+            />
             <button className="main-btn" onClick={() => {
-                setHull(buildHull(points));
-                setTriangle((buildTriangle(hull)));
+                if (points.length < 3)
+                    alert('You must insert 3 points at least');
+                else {
+                    setHull([...buildHull(points)]);
+                    //setTriangle([...buildTriangle(hull)]);
+                }
             }}>
                 Build convex hull and inscribe triangle
             </button>
 
             <Field
+                setPoints={(pointsForSet) => setPoints([...pointsForSet])}
+                clearHulls={() => {
+                    setHull([]);
+                    setTriangle([]);
+                }}
                 points={points}
                 hull={hull}
                 triangle={triangle}

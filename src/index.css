@@ -15,7 +15,7 @@ input.random {
     width: 90vw;
     height: 80vh;
     border: 2px solid lightgrey;
-    margin: 10px 10px 10px 45px;
+    margin: 10px auto 10px auto;
 }
 
 .main-btn {
@@ -32,17 +32,18 @@ input.random {
 }
 
 .num100y {
-    top: 80px
+    top: 80px;
+    left: 25px;
 }
 
 .num0 {
     top: calc(95px + 80vh);
-    left: 25px;
+    left: 45px;
 }
 
 .num100x {
     top: calc(100px + 80vh);
-    left: 92vw;
+    left: calc(92vw + 20px);
 }
 
 .point {

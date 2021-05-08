@@ -1,13 +1,17 @@
 import React from 'react';
 import './index.css';
+import {addPointByClick, insertPoint, points} from "./algorithm";
 
 export function Field(props) {
     return (
-        <div className="field">
-            <Triangle triangle={props.triangle}/>
+        <div className="field" onClick={({clientX, clientY}) => {
+            addPointByClick(clientX, clientY);
+            props.clearHulls();
+            props.setPoints(points);
+        }}>
+            {/*<Triangle triangle={props.triangle}/>*/}
             <Hull hull={props.hull}/>
             {props.points.map((point, index) => {
-                    console.log(index);
                     return (<div
                         key={index}
                         id={index}
@@ -48,18 +52,19 @@ function Triangle({triangle}) {
 function Hull({hull}) {
     return (hull.length > 2) ?
         <div>
-            {hull.map((hull, index) =>
-                (hull.length === index + 1) ?
-                    <svg key={'hull' + index} width="90vw" height="80wh">
-                        <line x1={hull[index].x + '%'} y1={100 - hull[index].y + '%'}
-                              x2={hull[index + 1].x + '%'} y2={100 - hull[index + 1].y + '%'}
-                              stroke="blue"/>
-                    </svg> :
-                    <svg key={'hull' + index} width="90vw" height="80wh">
-                        <line x1={hull[index].x + '%'} y1={100 - hull[index].y + '%'}
-                              x2={hull[0].x + '%'} y2={100 - hull[0].y + '%'}
-                              stroke="blue"/>
-                    </svg>
+            {hull.map((point, index) => {
+                    return (hull.length !== index + 1) ?
+                        <svg key={'hull' + index} width="90vw" height="80wh">
+                            <line x1={point.x + '%'} y1={100 - point.y + '%'}
+                                  x2={hull[index + 1]?.x + '%'} y2={100 - hull[index + 1]?.y + '%'}
+                                  stroke="blue"/>
+                        </svg> :
+                        <svg key={'hull' + index} width="90vw" height="80wh">
+                            <line x1={point.x + '%'} y1={100 - point.y + '%'}
+                                  x2={hull[0]?.x + '%'} y2={100 - hull[0]?.y + '%'}
+                                  stroke="blue"/>
+                        </svg>;
+                }
             )}
         </div> :
         null;
