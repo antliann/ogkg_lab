@@ -22,8 +22,9 @@ function App() {
                 if (points.length < 3)
                     alert('You must insert 3 points at least');
                 else {
-                    setHull([...buildHull(points)]);
-                    //setTriangle([...buildTriangle(hull)]);
+                    const hullPoints = buildHull(points)
+                    setHull([...hullPoints]);
+                    (hullPoints.length > 2) && setTriangle([...buildTriangle(hullPoints)]);
                 }
             }}>
                 Build convex hull and inscribe triangle

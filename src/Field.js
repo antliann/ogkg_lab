@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import {addPointByClick, insertPoint, points} from "./algorithm";
+import {addPointByClick, points} from "./algorithm";
 
 export function Field(props) {
     return (
@@ -9,8 +9,8 @@ export function Field(props) {
             props.clearHulls();
             props.setPoints(points);
         }}>
-            {/*<Triangle triangle={props.triangle}/>*/}
             <Hull hull={props.hull}/>
+            <Triangle triangle={props.triangle}/>
             {props.points.map((point, index) => {
                     return (<div
                         key={index}
