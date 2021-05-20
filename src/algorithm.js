@@ -70,7 +70,7 @@ function buildHull(points) {
 }
 
 function buildTriangle(hull) {
-    if (hull.length < 3 ) return alert("Error");
+    if (hull.length < 3) return alert("Error");
     if (hull.length === 3) return hull;
     let triangle = [hull[0], hull[1], hull[2]]
     for (let i = 0; i < hull.length - 2; i++) {
@@ -84,12 +84,35 @@ function buildTriangle(hull) {
     return triangle;
 }
 
-// function buildTriangleAlgo(hull) {
-//     let triangle = [hull[0], hull[1], hull[2]]
-//     for (let i = 0; i < hull.length; i++) {
-//         if (area([hull[i], hull[j], hull[k]]) > area(triangle))
-//             triangle = [hull[i], hull[j], hull[k]];
+// function buildTriangle(hull) {
+//     let p = 0;
+//     let v1 = p;
+//     let v2 = v1 + 1;
+//     let v3 = v2 + 1;
+//     let totalPoints = hull.length;
+//
+//     let [a, b, c] = [v1, v2, v3];
+//     let maxSquare = 0;
+//
+//     while (true) {
+//         while (v3 !== v1 && v2 !== v1) {
+//             if (area([hull[v1], hull[v2], hull[(v3 + 1) % totalPoints]]) > area([hull[v1], hull[v2], hull[v3]]))
+//                 v3 = (v3 + 1) % totalPoints;
+//             else v2 = (v2 + 1) % totalPoints;
+//         }
+//
+//         if (area([hull[v1], hull[v2], hull[v3]]) > maxSquare) {
+//             maxSquare = area([hull[v1], hull[v2], hull[v3]]);
+//             [a, b, c] = [v1, v2, v3];
+//         }
+//
+//         v1 = (v1 + 1) % totalPoints;
+//         v2 = (v1 + 1) % totalPoints;
+//         v3 = (v2 + 1) % totalPoints;
+//
+//         if (v1 === p) break;
 //     }
+//     return [hull[a], hull[b], hull[c]];
 // }
 
 const area = ([a, b, c]) => Math.abs(0.5 * (((a.x - c.x) * (b.y - c.y)) - ((a.y - c.y) * (b.x - c.x))));
